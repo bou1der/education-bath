@@ -27,6 +27,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${main_font.variable} font-main`}
+      suppressHydrationWarning
     >
       <body>
         <NuqsAdapter>

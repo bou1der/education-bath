@@ -3,18 +3,14 @@ import { swagger } from "@elysiajs/swagger"
 import { Elysia } from "elysia";
 import { headers as getNextHeaders } from "next/headers";
 import betterAuthView from "../auth/auth-view";
-import { logger } from "../logger";
 import { fileRouter } from "./routers/file";
 import { userRouter } from "./routers/user";
 import { bathRouter } from "./routers/bath";
+import { ApiErrorLogger } from "./middleware/logger";
 
 export const app = new Elysia({ prefix: "/api" })
-  .onTransform(function log({ path, request: { method } }) {
-    logger.info({
-      path,
-      method,
-    });
-  })
+  .onTransform(ApiErrorLogger)
+  .onError(ApiErrorLogger)
   .use(swagger())
   .use(userRouter)
   .all("/auth/*", betterAuthView)

@@ -2,7 +2,6 @@ import Elysia, { error, t } from "elysia";
 import { userService } from "./user";
 import { db } from "~/server/db";
 import { BathhouseSchema } from "~/lib/shared/types/bath";
-
 import { api } from "..";
 import { bathhouses } from "~/server/db/schema";
 import { IdSchema } from "~/lib/shared/types/utils";
@@ -12,14 +11,34 @@ export const bathRouter = new Elysia({prefix:"/bath"})
 .use(userService)
 
 .get("/",
-  async ({}) => {
+  async () => {
     return await db.query.bathhouses.findMany()
   })
+
+.get(
+  "/:id",
+  async ({params}) => {
+
+    const bathhouse = (await db.select()
+      .from(bathhouses)
+      .where(eq(bathhouses.id, params.id))
+      .limit(1)
+    )
+
+    if(!bathhouse){
+      return error(404, "Баня не найдена")
+    }
+
+    return bathhouse
+  },
+  {
+    params:IdSchema
+  }
+)
 
 .post(
   "/create",
   async ({body, ...req}) => {
-
     let ids:string[] | null = null
 
     if(body.images.length !== 0){

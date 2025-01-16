@@ -1,3 +1,4 @@
+export * from "./auth-schema"
 import {
   integer,
   pgTableCreator,
@@ -5,7 +6,6 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-import * as authSchema from "./auth-schema";
 import { sql } from "drizzle-orm";
 
 export const createTable = pgTableCreator((name) => `project_${name}`);
@@ -37,8 +37,3 @@ export const bathhouses = createTable("bathhouses", {
     .default(sql`ARRAY[]::varchar[]`),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 })
-
-export const user = authSchema.user;
-export const session = authSchema.session;
-export const account = authSchema.account;
-export const verification = authSchema.verification;

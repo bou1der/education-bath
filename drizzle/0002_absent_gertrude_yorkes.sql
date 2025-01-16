@@ -1,0 +1,1 @@
+ALTER TABLE "project_bathhouses" ADD COLUMN "imageIds" varchar[] DEFAULT ARRAY[]::varchar[] NOT NULL;
