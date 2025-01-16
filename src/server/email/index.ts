@@ -5,13 +5,13 @@ import { env } from "~/env";
 import { logger } from "~/server/logger";
 
 export class Email {
-  private transporter: nodemailer.Transporter;
+  public transporter: nodemailer.Transporter;
 
   constructor() {
     this.transporter = nodemailer.createTransport({
       host: env.EMAIL_HOST,
       port: env.EMAIL_PORT,
-      secure: true,
+      secure: false,
       auth: {
         user: env.EMAIL_USER,
         pass: env.EMAIL_PASSWORD,

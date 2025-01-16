@@ -1,10 +1,12 @@
 import { treaty } from "@elysiajs/eden";
+import { swagger } from "@elysiajs/swagger"
 import { Elysia } from "elysia";
 import { headers as getNextHeaders } from "next/headers";
 import betterAuthView from "../auth/auth-view";
 import { logger } from "../logger";
 import { fileRouter } from "./routers/file";
 import { userRouter } from "./routers/user";
+import { bathRouter } from "./routers/bath";
 
 export const app = new Elysia({ prefix: "/api" })
   .onTransform(function log({ path, request: { method } }) {
@@ -13,11 +15,14 @@ export const app = new Elysia({ prefix: "/api" })
       method,
     });
   })
+  .use(swagger())
   .use(userRouter)
   .all("/auth/*", betterAuthView)
-  .use(fileRouter);
+  .use(fileRouter)
+  .use(bathRouter)
 
 export type App = typeof app;
+
 export const { api } = treaty(app);
 
 export async function headers(): Promise<Record<string, string | undefined>> {

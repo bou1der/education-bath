@@ -56,8 +56,8 @@ export default function SignInPage() {
             className="space-y-2"
           >
             <FormField
-              control={form.control}
               name="email"
+              control={form.control}
               render={({ field }) => (
                 <FormItem>
                   <FormControl>

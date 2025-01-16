@@ -16,12 +16,15 @@
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
+    "@elysiajs/eden": "^1.2.0",
+    "@elysiajs/swagger": "^1.2.0",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@react-email/components": "^0.0.32",
     "@react-email/render": "^1.0.4",
+    "@sinclair/typebox-remix": "^0.8.1",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@tanstack/react-query": "^5.50.0",
     "@tanstack/react-table": "^8.20.5",
@@ -32,6 +35,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.33.0",
+    "elysia": "^1.2.10",
     "lucide-react": "^0.460.0",
     "mime-types": "^2.1.35",
     "next": "^15.0.1",
