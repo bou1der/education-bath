@@ -37,3 +37,15 @@ export const bathhouses = createTable("bathhouses", {
     .default(sql`ARRAY[]::varchar[]`),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 })
+
+export const requests = createTable("requests", {
+  id: varchar("id", { length: 255 })
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => Bun.randomUUIDv7()),
+  name:varchar("name")
+    .notNull(),
+  phone:text("phone")
+    .notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+})

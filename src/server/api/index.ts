@@ -6,6 +6,7 @@ import betterAuthView from "../auth/auth-view";
 import { fileRouter } from "./routers/file";
 import { userRouter } from "./routers/user";
 import { bathRouter } from "./routers/bath";
+import { requestRouter } from "./routers/request";
 import { ApiErrorLogger } from "./middleware/logger";
 
 export const app = new Elysia({ prefix: "/api" })
@@ -16,6 +17,7 @@ export const app = new Elysia({ prefix: "/api" })
   .all("/auth/*", betterAuthView)
   .use(fileRouter)
   .use(bathRouter)
+  .use(requestRouter)
 
 export type App = typeof app;
 

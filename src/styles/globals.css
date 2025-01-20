@@ -5,6 +5,7 @@
 :root {
   --nav-height: 4rem;
   --radius: 0.5rem;
+  --muted: #838383;
   --primary-foreground: #ffffff;
   --secondary: #3c603b;
   --secondary-foreground: #ffffff;
@@ -41,6 +42,21 @@
   }
 
   h1 {
-    @apply text-6xl;
+    @apply text-7xl leading-tight;
+  }
+  h2 {
+    @apply text-5xl;
+  }
+
+  h3 {
+    @apply text-4xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  p {
+    @apply text-base text-[#838383];
   }
 }

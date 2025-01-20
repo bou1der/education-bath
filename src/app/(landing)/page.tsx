@@ -1,9 +1,19 @@
 "use client";
 
+import { BathSection } from "./baths";
+import { ProductsSection } from "./products";
+import { QuestionsSection } from "./questions";
+import { WelcomeSection } from "./welcome";
+
 export default function LandingPage() {
 
   return (
-    <h1>АААА</h1>
+    <>
+      <WelcomeSection />
+      <BathSection />
+      <ProductsSection />
+      <QuestionsSection />
+    </>
   )
 }
 
